@@ -1,0 +1,235 @@
+:root {
+    --light-grey: #E5E7EB;
+    --grey: rgba(53, 53, 53, 0.5);
+    --white: white;
+    --green: #596D48;
+    --red: #e04545;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+main {
+    height: calc(100% - 7.5rem);
+    margin-top: 4rem;
+    position: relative;
+}
+.books {
+    /**
+* User input values.
+Credit: https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ 
+*/
+--grid-layout-gap: 1rem;
+--grid-column-count: 4;
+--grid-item--min-width: 15rem;
+
+/**
+* Calculated values.
+*/
+--gap-count: calc(var(--grid-column-count) - 1);
+--total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+--grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
+gap: var(--grid-layout-gap);
+}
+
+.book-card {
+    position: relative;
+    background-color: white;
+    min-width: var(--grid-item--min-width);
+    height: 20rem;
+    border-radius: 1rem;
+    border: var(--light-grey) 0.1rem solid;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+    z-index: 1;
+    overflow: hidden;
+}
+.book-card img {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    z-index: 0;
+    object-fit: cover;
+    filter: opacity(0.5);
+}
+.button-group {
+    width: 100%;
+    position: relative;
+}
+.book-card h2, 
+.book-card select, 
+.book-card button,
+.book-card h3,
+.book-card p
+ {
+    z-index: 2;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.book-card select,
+.book-card button {
+    width: 100%;
+    height: 2rem;
+    border: none;
+    background-color: rgb(229, 231, 235, .5);
+    margin-bottom: .5rem;
+    font-family: inherit;
+}
+
+.removeBtn:hover {
+    cursor: pointer;
+    transform: scale(102%);
+    background-color: tomato;
+}
+.add-new-book-btn:hover {
+    cursor: pointer;
+    transform: scale(102%);
+    background-color: var(--green);
+}
+.book-card button:active {
+    transform: translateY(5px);
+}
+.add-new {
+    justify-content: center;
+}
+/* MODAL CSS */
+.modal {
+    display: none;
+    position: fixed; 
+    padding-top: 50px;
+    left: 0; 
+    top: 0;
+    z-index: 12;
+    width: 100%;
+    height: 100%; 
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+.modal-content {
+    position: relative; 
+    background-color: white;
+    padding: 1rem; 
+    margin: auto; 
+    width: 75%;
+    border-radius: 5px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+form {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    width: 100%;
+    padding-bottom: 1rem;
+    /* box-shadow: var(--grey) 0px 8px 22px; */
+}
+legend  {
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    place-self: center;
+}
+form div {
+    position: relative;
+    width: calc(100% - 2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input,
+.input-read-status select {
+    display: inline-block;
+    width: calc(100% - 2rem);
+    height: 3rem;
+    margin: 0.5rem 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border: var(--light-grey) 1px solid;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+label {
+    position: absolute;
+    left: 1.25rem;
+    top: 1.25rem;
+    transition: .5s;
+    font-size: 1rem;
+    padding-left: 1rem;
+}
+input:focus ~ label, 
+input:not(:placeholder-shown) ~ label {
+    top: 0;
+    font-size: 1rem;
+    color: var(--grey);
+    background-color: var(--white);
+    padding: 0 0.5rem;
+}
+input:focus {
+    border: var(--blue) solid 1px;
+    box-shadow: var(--grey) 1px 2px 5px;
+}
+input:not(:placeholder-shown) {
+    border-color: var(--red);
+    border-width: 2px;
+}
+input:not(:placeholder-shown) ~ span {
+    opacity: 1;
+    height: 1rem;
+}
+input:valid {
+    border-color: var(--green);
+    border-width: 2px;
+}
+
+input:valid ~ span {
+    opacity: 0;
+    height: 0;
+}
+span {
+    margin-top: 0.25rem;
+    margin-left: 1rem;
+    height: 0;
+    opacity: 0;
+    font-size: 0.75rem;
+    color: var(--red);
+}
+.modal-btn-group {
+    width: calc(100% - 2rem);
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 1rem;
+    justify-items: center;
+    align-items: center;
+    padding-bottom: 1rem;
+}
+.modal-btn-group button {
+    width: 100%;
+    height: 3rem;
+    font-weight: bold;
+    border: var(--light-grey) 1px solid;
+    border-radius: 5px;
+}
+.cancelBtn:hover {
+    cursor: pointer;
+    background-color: var(--red);
+    transform: scale(102%);
+}
+.addBtn:hover {
+    cursor: pointer;
+    background-color: var(--green);
+    transform: scale(102%);
+}
