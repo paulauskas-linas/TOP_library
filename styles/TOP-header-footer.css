@@ -35,7 +35,7 @@ footer {
     display: flex;
     align-items: center;
 }
-.odin-group, .profile-group{
+.odin-group, .profile-group {
     display: flex;
     align-items: center;
     padding-left: 1rem;

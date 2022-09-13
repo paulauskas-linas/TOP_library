@@ -16,21 +16,8 @@
     </header>
     <main>
         <div class="books">
-            <div class="book-card add-new">
+            <div class="book-card add-new" data-id="inital">
                 <button class="add-new-book-btn">Add new book</button>
-            </div>
-            <div class="book-card">
-                <h2>Book Name</h2>
-                <h3>Author</h3>
-                <p>Pages</p>
-                <img src="https://source.unsplash.com/random/800x800" alt="random image">
-                <div class="button-group">
-                    <select name="status" id="read-status">
-                        <option value="Read">Read</option>
-                        <option value="Not-Read">Not Read</option>
-                    </select>
-                    <button class="removeBtn">Remove</button>
-                </div>
             </div>
         </div>
     </main>
@@ -40,11 +27,11 @@
             <div class="odin-group">
                 <a href="https://www.theodinproject.com/home" target="_blank">
                     <img class="odin-logo" src="https://gist.githubusercontent.com/paulauskas-linas/8e086442e1a6223caef4792dbfce1288/raw/632a7a2f673b74238e8f95614d5ac365e8638b9f/odin.svg" alt="logo of odin project"></a>
-                    <span class="odin-text"><a href="https://www.theodinproject.com/home" target="_blank">The Odin Project</a></span><span>course</span>
+                    <p class="odin-text"><a href="https://www.theodinproject.com/home" target="_blank">The Odin Project</a></p><p>course</p>
             </div>
         </div>
             <div class="footer-group">
-                <span>By Linas Paulauskas</span>
+                <p>By Linas Paulauskas</p>
                 <div class="profile-group">
                     <a class="profile-link" href="https://github.com/paulauskas-linas"   target="_blank">
                         <img class="profile-image" src="https://gist.githubusercontent.com/paulauskas-linas/5634d9c485f2d5670aab310d127ba085/raw/3737ef88d2c002b6579de37f0a1c89c19afa527b/GitHub-icon.svg" alt="github logo"></a>
@@ -53,20 +40,20 @@
     </footer>
     <div class="modal">
         <div class="modal-content">
-            <form id="form">
+            <form id="form" autocomplete="off">
                 <legend>Add new book</legend>
                 <div class="input-title">
-                    <input type="text" name="title" id="title" required minlength="3" placeholder=" ">
+                    <input type="text" name="title" id="title" required minlength="3" placeholder=" " value="">
                     <label for="title">Title</label>
                     <span>Required. Title should be at least 3 characters long</span>
                 </div>
                 <div class="input-author">
-                    <input type="text" name="author" id="author" required minlength="3" placeholder=" ">
+                    <input type="text" name="author" id="author" required minlength="3" placeholder=" " value="">
                     <label for="author">Author</label>
                     <span>Required. Author should be at least 3 characters long</span>
                 </div>
                 <div class="input-pages">
-                    <input type="tel" name="pages" id="pages" required minlength="2" maxlength="9" placeholder=" " pattern="\d+">
+                    <input type="tel" name="pages" id="pages" required minlength="2" maxlength="9" placeholder=" " pattern="\d+" value="">
                     <label for="pages">Number of pages</label>
                     <span>Required. Pages should be at least 2 digits long</span>
                 </div>
